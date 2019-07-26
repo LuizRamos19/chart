@@ -1,0 +1,17 @@
+(function() {
+    angular.module("apl-web-crh.reestruturacao-campanha", ["ui.bootstrap", "chart.js"])
+        .config(["sfNavegadorProvider", function (sfNavegadorProvider) {
+            sfNavegadorProvider.adicionarFluxoNavegacao(
+                sfNavegadorProvider.criarFluxoNavegacao("fl-reestruturacao-campanha")
+                    .adicionarEstado("st-reestruturacao-campanha", {
+                        templateUrl: "./app/modulos/reestruturacao-campanha/views/reestruturacao-campanha.html",
+                        controller: "reestruturacaoCampanhaController as campanhaCtrl"
+                    })
+
+                    .definirEstadoInicial("st-reestruturacao-campanha")
+            );
+        }])
+        .run(["sfTradutor", function (sfTradutor) {
+            sfTradutor.adicionarDicionarios(["app/modulos/reestruturacao-campanha/internacionalizacao"]);
+        }]);
+})();
