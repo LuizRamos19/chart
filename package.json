@@ -1,0 +1,24 @@
+{
+  "name": "chart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "controller.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuizRamos19/chart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuizRamos19/chart/issues"
+  },
+  "homepage": "https://github.com/LuizRamos19/chart#readme",
+  "dependencies": {
+    "angular-chart.js": "^1.1.1",
+    "chart.js": "^2.8.0"
+  }
+}
