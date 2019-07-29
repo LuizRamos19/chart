@@ -13,6 +13,14 @@ angular.module("chart", ["chart.js"]).controller("chartController", function($sc
         // drawChartJS();
     }
 
+    $scope.changeData = function() {
+        $scope.myChart.data.datasets[0]._meta[0].controller.chart.options.scales.xAxes[0].time.max = new Date("2020-11-30");
+        // $scope.myChart.data.labels = [new Date("2019-01-01"), new Date("2020-11-30")];
+        // $scope.myChart.update();
+        $scope.myChart.update();
+        // drawCanvasChart();
+    }
+
     function drawAngularChart() {
         $scope.labels = [new Date("2019-01-01"), new Date("2019-12-30")];
         // $scope.series = ['Series A', 'Series B'];
@@ -434,7 +442,8 @@ angular.module("chart", ["chart.js"]).controller("chartController", function($sc
                     ctx.restore();
                 }
             }
-        });         
+        });
+        // testando draw - FIM
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var ctxOptions = {
@@ -694,11 +703,16 @@ angular.module("chart", ["chart.js"]).controller("chartController", function($sc
                 },
             },
             plugins: [{
-                beforeRender: function (x, options) {
+                beforeRender: function (x, options) {  //tem que ver se tem como chamar apenas uma vez
                     var dataset = x.data.datasets[0];
                     var model = x.data.datasets[0]._meta[Object.keys(dataset._meta)[0]].dataset._model;
-
-                    var obj = x.config.data.datasets[0]._meta[0].dataset;
+                    console.log("teste ", x.config.data.datasets[0])
+                    var obj = null;
+                    if (!x.config.data.datasets[0]._meta[0]) {
+                        obj = x.config.data.datasets[0]._meta[1].dataset;
+                    } else {
+                        obj = x.config.data.datasets[0]._meta[0].dataset;
+                    }
                     var view = obj._view;
                     var backgroundColors = obj._chart.controller.data.datasets[obj._datasetIndex].backgroundColor;
                     var points = obj._children;
@@ -739,8 +753,8 @@ angular.module("chart", ["chart.js"]).controller("chartController", function($sc
                 }
             }]
         }
-        var myChart = new Chart(ctx, ctxOptions);
-        var legend = myChart.generateLegend();
+        $scope.myChart = new Chart(ctx, ctxOptions);
+        var legend = $scope.myChart.generateLegend();
         document.getElementById('myLegend').insertAdjacentHTML('beforeend', legend);
         // var ctxz = canvas.getContext('2d');
     }
