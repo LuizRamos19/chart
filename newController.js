@@ -401,16 +401,16 @@ function drawCanvasChart() {
             if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
                 var activePoint = this.chart.tooltip._active[0];
                 var ctx = this.chart.ctx;
-                var x = activePoint.tooltipPosition().x;
-                var topY = this.chart.scales['y-axis-0'].top;
+                var tooltipX = activePoint.tooltipPosition().x;
+                var tooltipY = activePoint.tooltipPosition().y;
                 var bottomY = this.chart.scales['y-axis-0'].bottom;
 
                 // draw line
                 ctx.save();
                 ctx.beginPath();
                 ctx.setLineDash([5, 5]);
-                ctx.moveTo(x, topY);
-                ctx.lineTo(x, bottomY);
+                ctx.moveTo(tooltipX, tooltipY);
+                ctx.lineTo(tooltipX, bottomY);
                 ctx.lineWidth = 1;
                 ctx.strokeStyle = '#07C';
                 ctx.stroke();
@@ -422,26 +422,24 @@ function drawCanvasChart() {
             this.chart.ctx.save();
             this.chart.ctx.strokeStyle = "#ff0000";
             var points = this.chart.getDatasetMeta(0).data;
-
             var point_x = points[0]._model.x;
             var point_y = points[0]._model.y;
 
-            for (var point of points) {
+            for (var i = 0; i < points.length; i++) {
                 this.chart.ctx.beginPath();
                 this.chart.ctx.lineWidth = 3;
-                console.log("point_x ", point_x, "point._model.x ", point._model.x)                        
-                console.log("point_y ", point_y, "point._model.y ", point._model.y)
-                this.chart.ctx.moveTo(point_x, point_y - point_y);
-                this.chart.ctx.lineTo(point._model.x, point._model.y - point._model.y);
+                // Adicionando mais 5 valores na coordenada Y para deixar a legenda abaixo do gráfico
+                var positionFixed = point_y - point_y + this.chart.chartArea.bottom + 5;
+                this.chart.ctx.moveTo(point_x, positionFixed);
+                this.chart.ctx.lineTo(points[i]._model.x, positionFixed);
 
-                point_x = point._model.x;
-                point_y = point._model.y;
+                point_x = points[i]._model.x;
+                point_y = points[i]._model.y;
+
                 this.chart.ctx.stroke();
             }
 
-
             this.chart.ctx.restore();
-
         }
     });
     // testando draw - FIM
