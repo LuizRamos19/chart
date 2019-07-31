@@ -392,6 +392,54 @@ function drawAngularChart() {
 }
 
 function drawCanvasChart() {
+    var data = [
+        { x: "09/01/2018", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "10/01/2018", y: 300, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "10/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "01/01/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "02/01/2019", y: 10, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "03/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "04/01/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "05/01/2019", y: 30, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "06/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "07/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "08/01/2019", y: 50, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "09/01/2019", y: 52, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "10/01/2019", y: 34, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "11/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "12/01/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "13/01/2019", y: 61, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "14/01/2019", y: 62, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "15/01/2019", y: 63, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "16/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "17/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "18/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "19/01/2019", y: 180, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "20/01/2019", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "21/01/2019", y: 211, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "22/01/2019", y: 212, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "22/01/2019", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "23/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "24/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "25/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "01/02/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "02/02/2019", y: 22, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "03/02/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "04/02/2019", y: 27, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
+        { x: "05/02/2019", y: 31, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
+        { x: "06/02/2019", y: 35, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
+        { x: "07/02/2019", y: 37, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
+        { x: "08/02/2019", y: 39, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
+        { x: "09/02/2019", y: 41, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "10/02/2019", y: 43, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "11/02/2019", y: 45, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "12/02/2019", y: 49, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "13/02/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "14/02/2019", y: 68, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
+        { x: "15/02/2019", y: 170, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "16/02/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 190, 93, 0.6)" },
+        { x: "17/02/2019", y: 183, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 190, 93, 0.6)" },
+    ];
     // testando draw
     var originalController = Chart.controllers.line;
     Chart.controllers.line = Chart.controllers.line.extend({
@@ -411,96 +459,8 @@ function drawCanvasChart() {
             // labels: [new Date("2019-01-02"), new Date("2019-01-30")],
             datasets: [{
                 label: 'MDR Negociado',
-                data: [
-                    { x: "09/01/2018", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "10/01/2018", y: 300, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "10/01/2018", y: null, mdr: null, campanha: null, periodo: null, mdrVop: null },
-                    { x: "01/01/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "02/01/2019", y: 10, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "03/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "04/01/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "05/01/2019", y: 30, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "06/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "07/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "08/01/2019", y: 50, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "09/01/2019", y: 52, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "10/01/2019", y: 34, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "11/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "12/01/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "13/01/2019", y: 61, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "14/01/2019", y: 62, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "15/01/2019", y: 63, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "16/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "17/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "18/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "19/01/2019", y: 180, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "20/01/2019", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "21/01/2019", y: 211, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "22/01/2019", y: 212, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "22/01/2019", y: null, mdr: null, campanha: null, periodo: null, mdrVop: null },
-                    { x: "01/02/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "02/02/2019", y: 22, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "03/02/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "04/02/2019", y: 27, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "05/02/2019", y: 31, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "06/02/2019", y: 35, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "07/02/2019", y: 37, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "08/02/2019", y: 39, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "09/02/2019", y: 41, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "10/02/2019", y: 43, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "11/02/2019", y: 45, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "12/02/2019", y: 49, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "13/02/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "14/02/2019", y: 68, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "15/02/2019", y: 170, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: true },
-                    { x: "16/02/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: true },
-                    { x: "17/02/2019", y: 183, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: true },
-                ],
-                backgroundColor: [
-                    { x: "09/01/2018", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "10/01/2018", y: 300, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "10/01/2018", y: null, mdr: null, campanha: null, periodo: null, mdrVop: null },
-                    { x: "01/01/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "02/01/2019", y: 10, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "03/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "04/01/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "05/01/2019", y: 30, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "06/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "07/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "08/01/2019", y: 50, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "09/01/2019", y: 52, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "10/01/2019", y: 34, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "11/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "12/01/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "13/01/2019", y: 61, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "14/01/2019", y: 62, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "15/01/2019", y: 63, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: false },
-                    { x: "16/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "17/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "18/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "19/01/2019", y: 180, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "20/01/2019", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "21/01/2019", y: 211, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "22/01/2019", y: 212, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , mdrVop: true },
-                    { x: "22/01/2019", y: null, mdr: null, campanha: null, periodo: null, mdrVop: null },
-                    { x: "01/02/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "02/02/2019", y: 22, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "03/02/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "04/02/2019", y: 27, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "05/02/2019", y: 31, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "06/02/2019", y: 35, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "07/02/2019", y: 37, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "08/02/2019", y: 39, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "09/02/2019", y: 41, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "10/02/2019", y: 43, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "11/02/2019", y: 45, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "12/02/2019", y: 49, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "13/02/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "14/02/2019", y: 68, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: false },
-                    { x: "15/02/2019", y: 170, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: true },
-                    { x: "16/02/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: true },
-                    { x: "17/02/2019", y: 183, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , mdrVop: true },
-                ],
+                data: data,
+                backgroundColor: data,
                 fill: 'origin',
                 spanGaps: false,
                 borderWidth: 1,
@@ -574,6 +534,7 @@ function drawCanvasChart() {
                     ticks: {
                         fontFamily: "'Arial'",
                         fontSize: 11,
+                        fontColor: "rgba(136, 136, 136, 1)",
                         // bounds: 'ticks'
                         padding: 5,
                         // max: 0,
@@ -643,8 +604,6 @@ function pintarGrafico(chart, options) {
     var minX = points[0]._view.x;
     var maxX = points[points.length - 1]._view.x;
     var linearGradient = ctx.createLinearGradient(minX, 0, maxX, 0);
-    var color = "transparent";
-    var ultimaCor = color;
 
     points.forEach(function(point, i) {
         // a função de `addColorStop` espera um número entre 0 e 1, neste caso temos que normalizar a posição x
@@ -664,23 +623,16 @@ function pintarGrafico(chart, options) {
         var colorStopPosition = roundNumber((point._view.x - minX) / (maxX - minX), 5);
         // caso especial para a primeira cor
 
-        if (backgroundColors[i].mdrVop) {
-            color = "rgba(89, 190, 93, 0.6)";
-        } else if (backgroundColors[i].mdrVop === false) {
-            color = "rgba(89, 137, 213, 0.6)";
-        }
-
         if (i === 0) {
-            linearGradient.addColorStop(0, color);
+            linearGradient.addColorStop(0, backgroundColors[i].cor);
         } else {
             // vai adicionar a cor somente se for diferente da anterior
-            if ( color !== ultimaCor) {
+            if ( backgroundColors[i].cor !== backgroundColors[i - 1].cor) {
             // adiciona a cor para o step anterior e para o novo step no mesmo local, para dar um tom de gradiente mais sólido
-                linearGradient.addColorStop(colorStopPosition, ultimaCor);
-                linearGradient.addColorStop(colorStopPosition, color);
+                linearGradient.addColorStop(colorStopPosition, backgroundColors[i - 1].cor);
+                linearGradient.addColorStop(colorStopPosition, backgroundColors[i].cor);
             }
         }
-        ultimaCor = color;
     });
     model.backgroundColor = linearGradient;
 }
@@ -759,27 +711,6 @@ function gerarTooltip(tooltipModel) {
 
 function gerarLegenda(chart) {
     var text = [];
-    // text.push('<ul class="' + chart.id + '-legend">');
-
-    // var data = chart.data;
-    // var datasets = data.datasets;
-    // var labels = data.labels;
-
-    // if (datasets.length) {
-    //     for (var i = 0; i < datasets[0].data.length; ++i) {
-    //         text.push('<li><span style="background-color:' + datasets[0].backgroundColor[i] + '"></span>');
-    //         if (labels[i]) {
-    //             text.push(labels[i]);
-    //         }
-    //         text.push('</li>');
-    //     }
-    // }
-
-    // text.push('</ul>');
-
-    // chart.ctx.retore();
-    // var divStyle = "margin-left: 2%; background-color: rgba(235, 235, 235, 1); width: 10%; text-align: center";
-    // text.push("<div style='display: flex; margin-left: -5px'>");
     text.push("<label style='position: absolute; transform: translateY(-53px) translateX(-55px)'>Períodos</label>");
     text.push("<label style='position: absolute; transform: translateY(-30px) translateX(-67px)'>Campanha</label>");
     text.push("<div style='display: flex;'>");
