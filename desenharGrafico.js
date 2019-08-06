@@ -11,7 +11,7 @@
      * @description
      * Factory desenharGrafico para construir o gráfico da tela de ciclo de vida de um EC
      */
-    angular.module("apl-web-crh.reestruturacao-campanha").factory("desenharGrafico", desenharGrafico);
+    angular.module("chart").factory("desenharGrafico", desenharGrafico);
 
     desenharGrafico.$inject = [];
 
@@ -42,7 +42,7 @@
          * @description
          * Responsavel por adicionar os dados e configurações que irão ser utilizadas pelo gráfico
          **/
-        function gerarGrafico(graficoElemento, legendaElemento, dados) {
+        function gerarGrafico(graficoElemento, dados) {
             // testando draw
             var originalController = Chart.controllers.line;
             Chart.controllers.line = Chart.controllers.line.extend({
@@ -105,7 +105,6 @@
                             fontColor: "rgba(154, 154, 154, 1)"
                         }
                     },
-                    legendCallback: gerarLegenda,
                     elements: {
                         line: {
                             tension: 0 // disables bezier curves
@@ -187,8 +186,6 @@
                 }]
             };
             var myChart = new Chart(graficoElemento, ctxOptions);
-            var legend = myChart.generateLegend();
-            legendaElemento.insertAdjacentHTML("beforeend", legend);
         }
 
         /**
@@ -252,9 +249,8 @@
             if (!tooltipEl) {
                 tooltipEl = document.createElement("div");
                 tooltipEl.id = "chartjs-tooltip";
-                var divStyle = "transform: translateY(-120%) translateX(-50%); min-width: 140px; background-color: white; border-radius: 2px; box-shadow: 0.5px 0.5px 1px 1px #dcdbdb;";
-                tooltipEl.setAttribute("style", divStyle);
-                tooltipEl.innerHTML = "<table style=" + "font-size: 11px; font-family: Arial; color: rgba(136, 136, 136, 1);" + "></table>";
+                tooltipEl.setAttribute("class", "chartjs-tooltip-customizada");
+                tooltipEl.innerHTML = "<table class='chartjs-tooltip-table-customizada'></table>";
                 document.body.appendChild(tooltipEl);
             }
 
@@ -314,31 +310,6 @@
             tooltipEl.style.fontStyle = tooltipModel._bodyFontStyle;
             tooltipEl.style.padding = tooltipModel.yPadding + "px " + tooltipModel.xPadding + "px";
             tooltipEl.style.pointerEvents = "none";
-        }
-
-        /**
-         * @ngdoc method
-         * @name  gerarLegenda
-         *
-         * @methodOf apl-web-crh.reestruturacao-campanha
-         *
-         * @description
-         * Responsavel por gerar a legenda do gráfico
-         **/
-        function gerarLegenda(chart) {
-            var text = [];
-            text.push("<label style='position: absolute; transform: translateY(-53px) translateX(-55px)'>Períodos</label>");
-            text.push("<label style='position: absolute; transform: translateY(-30px) translateX(-67px)'>Campanha</label>");
-            text.push("<div style='display: flex;'>");
-            text.push("<div style='width: 30px; height: 15px; background-color: rgba(89, 137, 213, 0.6); margin-right: 5px'></div>");
-            text.push("<label style='margin-right: 100px'>MDR Negociado: </label>");
-            text.push("<div style='width: 30px; height: 15px; background-color: rgba(89, 190, 93, 0.6); margin-right: 5px'></div>");
-            text.push("<label>MDR por VOP: </label>");
-            text.push("</div>");
-            // text.push("<div style='" + divStyle + "'>1</div>");
-            // text.push("<div style='" + divStyle + "'>2</div>");
-            // text.push("</div>");
-            return text.join("");
         }
 
         /**
@@ -408,7 +379,7 @@
                     chart.ctx.fillStyle = "rgba(125, 125, 125, 1)";
                     chart.ctx.font = "12px Arial";
                     var texto = dadosGrafico[i].periodo;
-                    var textWidth = chart.ctx.measureText(texto).width;
+                    // var textWidth = chart.ctx.measureText(texto).width;
                     chart.ctx.textAlign = "center";
                     chart.ctx.textBaseline = "middle";
                     chart.ctx.fillText(texto, centralPoint, chart.chartArea.bottom + 17);
@@ -443,6 +414,74 @@
                 }
             }
             chart.ctx.restore();
+
+            gerarLegendas(chart);
+        }
+
+        /**
+         * @ngdoc method
+         * @name  gerarLegendas
+         *
+         * @methodOf apl-web-crh.reestruturacao-campanha
+         *
+         * @description
+         * Responsavel por gerar a legenda do gráfico (Retângulos com as cores e labels dos períodos e campanhas)
+         **/
+        function gerarLegendas(chart) {
+            // Gerando os labels de periodos e campanhas
+            var textos = ["Periodos", "Campanhas"];
+            var pointY = chart.chartArea.bottom + 17;
+            for (var i = 0; i < textos.length; i++) {
+                var pointX = chart.chartArea.left - 5;
+                chart.ctx.fillStyle = "rgba(125, 125, 125, 1)";
+                chart.ctx.font = "12px Arial";
+                chart.ctx.textAlign = "right";
+                chart.ctx.textBaseline = "middle";
+                chart.ctx.fillText(textos[i], pointX, pointY);
+                chart.ctx.restore();
+                pointY+=30;
+            }
+            // Gerando os labels de periodos e campanhas - FIM
+            // Gerando as labels da legenda
+            pointX = chart.chartArea.left;
+            pointY-=30;
+            var mdrs = ["MDR Negociado", "MDR por VOP", "MDR Negociado", "MDR por VOP", "MDR Negociado", "MDR por VOP", "MDR Negociado", "MDR por VOP", "MDR Negociado", "MDR por VOP"];
+            var mdrsCor = ["rgba(89, 137, 213, 0.6)", "rgba(89, 190, 93, 0.6)", "rgba(89, 137, 213, 0.6)", "rgba(89, 190, 93, 0.6)", "rgba(89, 137, 213, 0.6)", "rgba(89, 190, 93, 0.6)", "rgba(89, 137, 213, 0.6)", "rgba(89, 190, 93, 0.6)", "rgba(89, 137, 213, 0.6)", "rgba(89, 190, 93, 0.6)"];
+
+            for (var i = 0; i < mdrs.length; i++) {
+                var comprimentoRet = 30;
+                var larguraRet = 15;
+                var retTexto = 5;
+                var texto = mdrs[i];
+                var textWidth = chart.ctx.measureText(texto).width;
+                
+                // valida se tudo o que for desenhado será depois da largura do gráfico, caso seja, quebra linha
+                if ((pointX + comprimentoRet + textWidth + retTexto) > chart.chartArea.right) {
+                    pointX = chart.chartArea.left;
+                    pointY-=30;
+                }
+
+                // desenhando o retângulo com a cor
+                chart.ctx.save();
+                chart.ctx.strokeStyle = mdrsCor[i];
+                chart.ctx.beginPath();
+                chart.ctx.lineWidth = larguraRet;
+                chart.ctx.moveTo(pointX, pointY);
+                pointX+=comprimentoRet;
+                chart.ctx.lineTo(pointX, pointY);
+                chart.ctx.stroke();
+                
+                // desenhando o texto que acompanha o retângulo
+                chart.ctx.fillStyle = "rgba(125, 125, 125, 1)";
+                chart.ctx.font = "12px Arial";
+                chart.ctx.textAlign = "left";
+                chart.ctx.textBaseline = "middle";
+                pointX+=retTexto;
+                chart.ctx.fillText(texto, pointX, pointY);
+                chart.ctx.restore();
+                pointX+=textWidth + comprimentoRet;
+            }
+            // Gerando as labels da legenda - FIM
         }
 
         /**
