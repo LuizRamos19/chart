@@ -1,0 +1,187 @@
+<div class="row infoTopo">
+    <div class="col-xs-6" ng-show="detECAmexCtrl.exibirBreadcrumbs">
+        <ol class="breadcrumb">
+            <li><label sf-traducao="@NumeracaoRangeEcAmexBreadcrumb"></label></li>
+            <li><label sf-traducao="@DetalheNumeracaoRangeEcAmexBreadcrumb"></label></li>
+            <li><label sf-traducao="@DetalheBreadcrumb"></label></li>
+        </ol>
+    </div>
+
+    <!-- LINK VOLTAR -->
+    <div class="col-xs-6 voltarLink">
+        <ul>
+            <li><a sf-voltar href="#"><strong>&#60</strong> VOLTAR</a></li>
+        </ul>
+    </div>
+</div>
+<!-- menssagen de erro-->
+<div ng-switch="errosForm" class="alerta">
+    <div ng-switch-then="true">
+        <div ng-show="campanhaCtrl.erro" ng-class="{alertaErro: campanhaCtrl.erro}" class="container alertaErro">
+            <button ng-click="campanhaCtrl.erro = false;" type="button" class="btnCloseAlerta close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p class="container msgAlertaErro">
+                <img class="figuraIcone" alt="" src="app/assets/img/u140.png"> {{campanhaCtrl.erro}} </p>
+        </div>
+    </div>
+    <!--sucesso-->
+    <div ng-switch-then="false">
+        <div ng-show="campanhaCtrl.success" ng-class="{alertaSucesso: campanhaCtrl.success}" class="container alertaSucesso">
+            <button ng-click="campanhaCtrl.success = false;" type="button" class="btnCloseAlerta close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p class="container msgAlertaSucesso">
+                <img class="figuraIcone" alt="" src="app/assets/img/u2436.png"> {{campanhaCtrl.success}} </p>
+        </div>
+    </div>
+</div>
+<div class="container containerPadrao">
+	<div id="header" class="header-relatorio">
+		<div class="titulo">
+			<h1 sf-traducao="@TituloReestruturacaoCampanha"></h1>
+		</div>
+	</div>
+	<div class="containerBordaTop container">
+		<form name="frm" novalidate>
+			<div class="row">
+				<div class="row pt1">
+					<span class="col-xs-3" sf-traducao="@CodigoDoEstabelecimento"></span>
+					<span class="col-xs-3" sf-traducao="@cnpj"></span>
+				</div>
+				<div class="row pt1">
+					<div class="col-xs-3">
+                        <div class="row pt1">
+                            <div class="col-xs-12">
+                                <input type="text" ui-mask-placeholder ui-mask-placeholder-char="space" ui-mask="9999999999" maxlength="10" ui-mask-placeholder-char="space"
+                                    ui-options="{'clearOnBlur':false, 'allowInvalidValue': true}" class="form-control" ng-model="campanhaCtrl.filtroCodigoEC"
+                                    required>
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="row pt1">
+                            <div class="col-xs-12">
+                                <input type="text" ui-mask="99.999.999/9999-99" class="form-control" ng-model="campanhaCtrl.filtroCNPJ" required>
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-xs-2 ">
+						<button class="btnPadrao btn-block" ng-click="campanhaCtrl.acompanharCampanha()">
+						    <span sf-traducao="@Consultar"></span>
+					    </button>
+					</div>
+				</div>
+			</div>
+		</form>
+        <br>
+        <div class="row">
+            <div class="row pt1">
+                <span class="col-xs-3" sf-traducao="@CampanhaAtual"></span>
+                <span class="col-xs-3" sf-traducao="@mdrNegociado"></span>                
+            </div>
+            <div class="row pt1">
+                <div class="col-xs-3">
+                    <div class="row pt1">
+                        <div class="col-xs-12">
+                            <label>{{campanhaCtrl.campanhaAtual}}</label>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="row pt1">
+                        <div class="col-xs-12">
+                            <label>{{campanhaCtrl.mdrNegociado}}</label>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div ng-if="campanhaCtrl.campanhaConsultada">
+            <uib-accordion>
+                <div class="borda-customizada row" uib-accordion-group is-open="campanhaCtrl.statusAccordion.aberto">
+                    <uib-accordion-heading ng-click="campanhaCtrl.statusAccordion.aberto = !campanhaCtrl.statusAccordion.aberto">
+                        <table class="accordion-header">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span sf-traducao="@GruposEconomicos"></span>
+                                        <i class="pull-left glyphicon" ng-class="{'glyphicon-chevron-up': campanhaCtrl.statusAccordion.aberto, 'glyphicon-chevron-down': !campanhaCtrl.statusAccordion.aberto}"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </uib-accordion-heading>
+                    <div class="row">
+                        <table class="tabela">
+                            <thead>
+                                <tr>
+                                    <th sf-traducao="@EstabelecimentoComercial" style="width: 25%;"></th>
+                                    <th sf-traducao="@CNPJ"></th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <table class="tabela tabela-valores">
+                            <tbody>
+                                <tr ng-repeat="ec in campanhaCtrl.estabelecimentosComerciais">
+                                    <td style="width: 25%;">{{ec.codEc}}</td>
+                                    <td>{{ec.cnpj}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </uib-accordion>
+            <div class="row">
+                <ul class="nav nav-tabs">
+                    <li>
+                        <uib-tabset class="tabs-secundary" active="campanhaCtrl.indexTab">
+                            <uib-tab index="0" ng-click="campanhaCtrl.navegar('A', 0, 'year')" class="padding-direita-mini-2">
+                                <uib-tab-heading>
+                                    <span sf-traducao="@Anual"></span>
+                                </uib-tab-heading>
+                            </uib-tab>
+                            <uib-tab index="1" ng-click="campanhaCtrl.navegar('M', 1, 'month')" class="padding-direita-mini-2">
+                                <uib-tab-heading>
+                                    <span sf-traducao="@Mensal"></span>
+                                </uib-tab-heading>
+                            </uib-tab>
+                            <uib-tab index="2" ng-click="campanhaCtrl.navegar('S', 2, 'day')">
+                                <uib-tab-heading>
+                                    <span sf-traducao="@Semanal"></span>
+                                </uib-tab-heading>
+                            </uib-tab>
+                        </uib-tabset>
+                    </li>
+                </ul>
+                <div>
+                    <form class="formSlider" style="margin-top: 20px; margin-bottom: 30px; height: 30px">
+                        <div class="col-md-3 uib-datepicker-container">
+                            <p class="input-group">
+                            <input type="text" class="form-control" uib-datepicker-popup="{{campanhaCtrl.format}}" 
+                                ng-model="campanhaCtrl.data" is-open="campanhaCtrl.status.opened" datepicker-options="campanhaCtrl.dateOptions"
+                                date-disabled="disabled(date, mode)" ng-focus="campanhaCtrl.status.opened=true" ng-required="true" close-text="Close"
+                                ng-change="campanhaCtrl.change()" />
+                            <span class="input-group-btn uib-calendario">
+                                <button type="button" class="btn btn-default" ng-click="campanhaCtrl.abrirCalendario($event)"></button>
+                            </span>
+                            </p>
+                        </div>
+                        <div class="col-sm-9">
+                            <rzslider rz-slider-model="campanhaCtrl.slider.value" rz-slider-options="campanhaCtrl.slider.options"></rzslider>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="graficoCampanha">
+            <canvas width="400px" height="120px" class="chart chart-line" chart-options="campanhaCtrl.options" chart-data="campanhaCtrl.data"
+                chart-labels="campanhaCtrl.labels" chart-dataset-override="campanhaCtrl.datasetOverride">
+                <span sf-traducao="@erroCanvas"></span>
+            </canvas>
+        </div>
+	</div>
+</div>
