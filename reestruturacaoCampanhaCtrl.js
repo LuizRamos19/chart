@@ -46,65 +46,80 @@
         vm.alterarPeriodo = alterarPeriodo;
         vm.abrirCalendario = abrirCalendario;
         vm.statusAccordion = { aberto: false };
-        vm.estabelecimentosComerciais = [
-            { codEc: "1234", cnpj: "322323233323" },
-            { codEc: "1234", cnpj: "322323233323" },
-            { codEc: "1234", cnpj: "322323233323" },
-            { codEc: "1234", cnpj: "322323233323" },
-            { codEc: "1234", cnpj: "322323233323" },
-            { codEc: "1234", cnpj: "322323233323" }
-        ]
+        vm.estabelecimentosComerciais = null;
         vm.campanhaConsultada = false;
         // Métodos - FIM
 
-        vm.dados = [
-                { x: "09/01/2018", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "10/01/2018", y: 300, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "10/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "01/01/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "02/01/2019", y: 10, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "03/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "04/01/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "05/01/2019", y: 30, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "06/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "07/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "08/01/2019", y: 50, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "09/01/2019", y: 52, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "10/01/2019", y: 34, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "11/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "12/01/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "13/01/2019", y: 61, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "14/01/2019", y: 62, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "15/01/2019", y: 63, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "16/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "17/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "18/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "19/01/2019", y: 180, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "20/01/2019", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "21/01/2019", y: 211, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "22/01/2019", y: 212, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "22/01/2019", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "23/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "24/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "25/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "01/02/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "02/02/2019", y: 22, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "03/02/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "04/02/2019", y: 27, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
-                { x: "05/02/2019", y: 31, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
-                { x: "06/02/2019", y: 35, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
-                { x: "07/02/2019", y: 37, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
-                { x: "08/02/2019", y: 39, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(137, 137, 213, 0.6)" },
-                { x: "09/02/2019", y: 41, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "10/02/2019", y: 43, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "11/02/2019", y: 45, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "12/02/2019", y: 49, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "13/02/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "14/02/2019", y: 68, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 137, 213, 0.6)" },
-                { x: "15/02/2019", y: 170, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "16/02/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 190, 93, 0.6)" },
-                { x: "17/02/2019", y: 183, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "rgba(89, 190, 93, 0.6)" }
-        ];
+        vm.dados = {
+            result: {
+                codEc: 1645,
+                cpfCnpj: "2234343423432432",
+                campanhaAtual: "Domicílio",
+                mdrs: [
+                    { label: "negociado", valor: "XPTO", cor: "#000", ano: 2019 },
+                    { label: "acordado", valor: "XYZ", cor: "#a91c1c", ano: 2019 },
+                    { label: "pendente", valor: "ZHI", cor: "#d08c8c", ano: 2019 },
+                    { label: "inativo", valor: "ACORD", cor: "#8c6e6e", ano: 2019 },
+                ],
+                gruposEconomicos: [
+                    { codEc: "1234", cnpj: "322323233323" },
+                    { codEc: "1234", cnpj: "322323233323" },
+                    { codEc: "1234", cnpj: "322323233323" },
+                    { codEc: "1234", cnpj: "322323233323" },
+                    { codEc: "1234", cnpj: "322323233323" },
+                    { codEc: "1234", cnpj: "322323233323" }
+                ],
+                dadosGraficos: [
+                    { x: "09/01/2018", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)", indicador: "A" },
+                    { x: "10/01/2018", y: 300, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "rgba(89, 190, 93, 0.6)", indicador: "A" },
+                    { x: "10/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)", indicador: "A" },
+                    { x: "01/01/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "02/01/2019", y: 10, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "03/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "04/01/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "05/01/2019", y: 30, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "06/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "07/01/2019", y: 20, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "08/01/2019", y: 50, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "09/01/2019", y: 52, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "10/01/2019", y: 34, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "11/01/2019", y: 33, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "12/01/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "13/01/2019", y: 61, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "14/01/2019", y: 62, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "15/01/2019", y: 63, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#000", indicador: "A" },
+                    { x: "16/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#a91c1c", indicador: "A" },
+                    { x: "17/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#a91c1c", indicador: "A" },
+                    { x: "18/01/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#a91c1c", indicador: "A" },
+                    { x: "19/01/2019", y: 180, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#a91c1c", indicador: "A" },
+                    { x: "20/01/2019", y: 200, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#a91c1c", indicador: "A" },
+                    { x: "21/01/2019", y: 211, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#a91c1c", indicador: "A" },
+                    { x: "22/01/2019", y: 212, mdr: "XPTO", campanha: "Domicílio", periodo: "1" , cor: "#a91c1c", indicador: "A" },
+                    { x: "22/01/2019", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)", indicador: "A" },
+                    { x: "23/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)", indicador: "A" },
+                    { x: "24/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)", indicador: "A" },
+                    { x: "25/01/2018", y: null, mdr: null, campanha: null, periodo: null, cor: "rgba(89, 190, 93, 0.6)", indicador: "A" },
+                    { x: "01/02/2019", y: 0, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "02/02/2019", y: 22, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "03/02/2019", y: 25, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "04/02/2019", y: 27, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#8c6e6e", indicador: "A" },
+                    { x: "05/02/2019", y: 31, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#8c6e6e", indicador: "A" },
+                    { x: "06/02/2019", y: 35, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#8c6e6e", indicador: "A" },
+                    { x: "07/02/2019", y: 37, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#8c6e6e", indicador: "A" },
+                    { x: "08/02/2019", y: 39, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#8c6e6e", indicador: "A" },
+                    { x: "09/02/2019", y: 41, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "10/02/2019", y: 43, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "11/02/2019", y: 45, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "12/02/2019", y: 49, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "13/02/2019", y: 60, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "14/02/2019", y: 68, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "15/02/2019", y: 170, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "16/02/2019", y: 177, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" },
+                    { x: "17/02/2019", y: 183, mdr: "XPTO", campanha: "Domicílio", periodo: "2" , cor: "#d08c8c", indicador: "A" }
+                ]
+            }
+        };
+        console.log("Teste ", vm.dados);
 
         iniciar();
 
@@ -186,7 +201,8 @@
                 vm.campanhaConsultada = true;
                 var canvas = $element.find("canvas")[0];
                 var graficoElemento = canvas.getContext("2d");
-                desenharGrafico.gerarGrafico(graficoElemento, vm.dados, vm.data, vm.tipoFormatacaoData);
+                vm.estabelecimentosComerciais = vm.dados.result.gruposEconomicos;
+                desenharGrafico.gerarGrafico(graficoElemento, vm.dados.result.dadosGraficos, vm.data, vm.tipoFormatacaoData, vm.dados.result.mdrs);
                 vm.erro = $filter("translate")("@sistemaIndisponivel");
                 // vm.ecPesquisado.retornoAcompanhamento = [];
             }
